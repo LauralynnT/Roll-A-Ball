@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if (count >= 12)
+        if (count >= 1)
         {
             winTextObject.SetActive(true);
             winWall.SetActive(false);
@@ -52,6 +52,11 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count++;
             SetCountText();
+        }
+        if (other.gameObject.CompareTag("Area1Wall"))
+        {
+            other.gameObject.SetActive(false);
+            winTextObject.SetActive(false);
         }
     }
 }
