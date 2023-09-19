@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public GameObject winWall;
     public GameObject mazeWinText;
     public GameObject mazeEndWall;
+    public GameObject mazeObjectiveText;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
     }
     void SetCountText()
     {
-        countText.text = "Count: " + count.ToString();
+        countText.text = "Coins: " + count.ToString();
         if (count == 12)
         {
             winTextObject.SetActive(true);
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
         {
             mazeWinText.SetActive(true);
             mazeEndWall.SetActive(false);
+            mazeObjectiveText.SetActive(false);
         }
     }
     private void FixedUpdate()
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             winTextObject.SetActive(false);
+            mazeObjectiveText.SetActive(true);
         }
         if (other.gameObject.CompareTag("Area2Wall"))
         {
