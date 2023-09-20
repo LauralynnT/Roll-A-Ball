@@ -7,6 +7,7 @@ TagManager:
   - Pickup
   - Area1Wall
   - Area2Wall
+  - Area3Wall
   layers:
   - Default
   - TransparentFX

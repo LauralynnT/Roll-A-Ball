@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public GameObject mazeWinText;
     public GameObject mazeEndWall;
     public GameObject mazeObjectiveText;
+    public GameObject mazeShortcut;
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             mazeWinText.SetActive(false);
+            mazeShortcut.SetActive(false);
         }
     }
 }
