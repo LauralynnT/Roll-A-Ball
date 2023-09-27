@@ -7,11 +7,13 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     private int count;
+    private int mazeCount;
     private Rigidbody rb;
     private float movementX;
     private float movementY;
     public float speed = 0;
     public TextMeshProUGUI countText;
+    public TextMeshProUGUI mazeCountText;
     public GameObject winTextObject;
     public GameObject winWall;
     public GameObject mazeWinText;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent <Rigidbody>();
         count = 0;
+        mazeCount = 24;
         SetCountText();
         winTextObject.SetActive(false);
     }
@@ -38,6 +41,7 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Coins: " + count.ToString();
+        mazeCountText.text =mazeCount.ToString();
         if (count == 12)
         {
             winTextObject.SetActive(true);
@@ -61,10 +65,12 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count++;
+            mazeCount--;
             SetCountText();
         }
         if (other.gameObject.CompareTag("Area1Wall"))
         {
+
             other.gameObject.SetActive(false);
             winTextObject.SetActive(false);
             mazeObjectiveText.SetActive(true);
