@@ -8,6 +8,7 @@ TagManager:
   - Area1Wall
   - Area2Wall
   - Area3Wall
+  - MenuReset
   layers:
   - Default
   - TransparentFX
