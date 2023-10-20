@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,12 +15,16 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI countText;
     public TextMeshProUGUI mazeCountText;
+    public GameObject buttonText;
     public GameObject winTextObject;
     public GameObject winWall;
     public GameObject mazeWinText;
     public GameObject mazeEndWall;
     public GameObject mazeObjectiveText;
     public GameObject mazeShortcut;
+    public GameObject mainCamera;
+    public GameObject buttonCamera;
+    public GameObject finishText;
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +85,47 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             mazeWinText.SetActive(false);
             mazeShortcut.SetActive(false);
+            mainCamera.SetActive(false);
+            buttonCamera.SetActive(true);
+            buttonText.SetActive(true);
+
+            if (other.gameObject.CompareTag("RedButton"))
+            {
+                other.gameObject.SetActive(true);
+                if (other.gameObject.CompareTag("CyanButton"))
+                {
+                    other.gameObject.SetActive(true);
+                    if (other.gameObject.CompareTag("GreenButton"))
+                    {
+                        other.gameObject.SetActive(true);
+                        if (other.gameObject.CompareTag("BlueButton"))
+                        {
+                            other.gameObject.SetActive(true);
+                            if (other.gameObject.CompareTag("PinkButton"))
+                            {
+                                other.gameObject.SetActive(true);
+                                if (other.gameObject.CompareTag("OrangeButton"))
+                                {
+                                    other.gameObject.SetActive(true);
+                                    if (other.gameObject.CompareTag("YellowButton"))
+                                    {
+                                        other.gameObject.SetActive(true);
+                                        if (other.gameObject.CompareTag("PurpleButton"))
+                                        {
+                                            other.gameObject.SetActive(true);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            finishText.SetActive(true);
+            buttonText.SetActive(false);
         }
     }
 }

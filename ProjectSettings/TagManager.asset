@@ -9,6 +9,14 @@ TagManager:
   - Area2Wall
   - Area3Wall
   - MenuReset
+  - RedButton
+  - OrangeButton
+  - YellowButton
+  - GreenButton
+  - CyanButton
+  - BlueButton
+  - PurpleButton
+  - PinkButton
   layers:
   - Default
   - TransparentFX
