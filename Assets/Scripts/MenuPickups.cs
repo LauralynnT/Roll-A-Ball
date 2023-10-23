@@ -20,13 +20,12 @@ public class MenuPickups : MonoBehaviour
         {
             Debug.Log("pickup");
             StartCoroutine(ResetPickup(other.gameObject));
-            other.gameObject.SetActive(true);
-            
         }
         IEnumerator ResetPickup(GameObject other)
         {
             other.gameObject.SetActive(false);
             yield return new WaitForSecondsRealtime(2);
+            other.gameObject.SetActive(true);
         }
     }
     
