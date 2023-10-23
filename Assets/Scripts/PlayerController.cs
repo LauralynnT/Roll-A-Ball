@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using Unity.VisualScripting;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
+    private int buttonCondition;
     private int count;
     private int mazeCount;
     private Rigidbody rb;
@@ -25,6 +27,26 @@ public class PlayerController : MonoBehaviour
     public GameObject mainCamera;
     public GameObject buttonCamera;
     public GameObject finishText;
+    public GameObject mainCanvas;
+    public GameObject pauseCanvas;
+    public GameObject controlsCanvas;
+    public GameObject redLight;
+    public GameObject orangeLight;
+    public GameObject yellowLight;
+    public GameObject greenLight;
+    public GameObject blueLight;
+    public GameObject cyanLight;
+    public GameObject pinkLight;
+    public GameObject purpleLight;
+    public GameObject stairs;
+    public GameObject redArch;
+    public GameObject orangeArch;
+    public GameObject yellowArch;
+    public GameObject greenArch;
+    public GameObject blueArch;
+    public GameObject cyanArch;
+    public GameObject pinkArch;
+    public GameObject purpleArch;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +58,15 @@ public class PlayerController : MonoBehaviour
         winTextObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+            mainCanvas.SetActive(false);
+            controlsCanvas.SetActive(false);
+            pauseCanvas.SetActive(true);
+        }
+    }
     // Update is called once per frame
     void OnMove(InputValue movementValue)
     {
@@ -47,12 +78,12 @@ public class PlayerController : MonoBehaviour
     {
         countText.text = "Coins: " + count.ToString();
         mazeCountText.text =mazeCount.ToString();
-        if (count == 12)
+        if (count == 1)
         {
             winTextObject.SetActive(true);
             winWall.SetActive(false);
         }
-        else if (count == 24)
+        else if (count == 2)
         {
             mazeWinText.SetActive(true);
             mazeEndWall.SetActive(false);
@@ -63,6 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -87,45 +119,68 @@ public class PlayerController : MonoBehaviour
             mazeShortcut.SetActive(false);
             mainCamera.SetActive(false);
             buttonCamera.SetActive(true);
-            buttonText.SetActive(true);
-
-            if (other.gameObject.CompareTag("RedButton"))
+            while (stairs.active == false)
             {
-                other.gameObject.SetActive(true);
-                if (other.gameObject.CompareTag("CyanButton"))
-                {
-                    other.gameObject.SetActive(true);
-                    if (other.gameObject.CompareTag("GreenButton"))
-                    {
-                        other.gameObject.SetActive(true);
-                        if (other.gameObject.CompareTag("BlueButton"))
-                        {
-                            other.gameObject.SetActive(true);
-                            if (other.gameObject.CompareTag("PinkButton"))
-                            {
-                                other.gameObject.SetActive(true);
-                                if (other.gameObject.CompareTag("OrangeButton"))
-                                {
-                                    other.gameObject.SetActive(true);
-                                    if (other.gameObject.CompareTag("YellowButton"))
-                                    {
-                                        other.gameObject.SetActive(true);
-                                        if (other.gameObject.CompareTag("PurpleButton"))
-                                        {
-                                            other.gameObject.SetActive(true);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                StartCoroutine(ArchLights());
             }
+        }
+        if (other.gameObject.CompareTag("RedButton") || (buttonCondition == 1 && other.gameObject.CompareTag("CyanButton")) || (buttonCondition == 2 && other.gameObject.CompareTag("GreenButton")) || (buttonCondition == 3 && other.gameObject.CompareTag("BlueButton")) || (buttonCondition == 4 && other.CompareTag("PinkButton")) || (buttonCondition == 5 && other.gameObject.CompareTag("OrangeButton")) || (buttonCondition == 6 && other.gameObject.CompareTag("YellowButton")) || (buttonCondition == 7 && other.gameObject.CompareTag("PurpleButton")))
+        {
+            buttonCondition ++;
+            other.gameObject.SetActive(true);
+            Debug.Log(buttonCondition);
+        }
+        else if ((buttonCondition != 0 && other.gameObject.CompareTag("RedButton")) || (buttonCondition != 1 && other.gameObject.CompareTag("CyanButton")) || (buttonCondition != 2 && other.gameObject.CompareTag("GreenButton")) || (buttonCondition != 3 && other.gameObject.CompareTag("BlueButton")) || (buttonCondition != 4 && other.gameObject.CompareTag("PinkButton")) || (buttonCondition != 5 && other.gameObject.CompareTag("OrangeButton")) || (buttonCondition != 6 && other.gameObject.CompareTag("YellowButton")) || (buttonCondition != 7 && other.gameObject.CompareTag("PurpleButton")))
+        {
+            TurnOffLights();
+            buttonCondition = 0;
+            Debug.Log(buttonCondition);
+        }
+        if (buttonCondition == 8)
+        {
+            stairs.SetActive(true);
         }
         if (other.gameObject.CompareTag("Finish"))
         {
             finishText.SetActive(true);
-            buttonText.SetActive(false);
         }
+    }
+     void TurnOffLights()
+    {
+        redLight.SetActive(false);
+        orangeLight.SetActive(false);
+        yellowLight.SetActive(false);
+        greenLight.SetActive(false);
+        blueLight.SetActive(false);
+        cyanLight.SetActive(false);
+        pinkLight.SetActive(false);
+        purpleLight.SetActive(false);
+    }
+    private IEnumerator ArchLights()
+    {
+            redArch.SetActive(true);
+            purpleArch.SetActive(false);
+            yield return new WaitForSecondsRealtime(2);
+            cyanArch.SetActive(true);
+            redArch.SetActive(false);
+            yield return new WaitForSecondsRealtime(2);
+            greenArch.SetActive(true);
+            cyanArch.SetActive(false);
+            yield return new WaitForSecondsRealtime(2);
+            blueArch.SetActive(true);
+            greenArch.SetActive(false);
+            yield return new WaitForSecondsRealtime(2);
+            pinkArch.SetActive(true);
+            blueArch.SetActive(false);
+            yield return new WaitForSecondsRealtime(2);
+            orangeArch.SetActive(true);
+            pinkArch.SetActive(false);
+            yield return new WaitForSecondsRealtime(2);
+            yellowArch.SetActive(true);
+            orangeArch.SetActive(false);
+            yield return new WaitForSecondsRealtime(2);
+            purpleArch.SetActive(true);
+            yellowArch.SetActive(false);
+            yield return new WaitForSecondsRealtime(2);
     }
 }
