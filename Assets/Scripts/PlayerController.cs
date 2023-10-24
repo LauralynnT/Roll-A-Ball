@@ -47,6 +47,15 @@ public class PlayerController : MonoBehaviour
     public GameObject cyanArch;
     public GameObject pinkArch;
     public GameObject purpleArch;
+    public GameObject lights;
+    public GameObject redOff;
+    public GameObject orangeOff;
+    public GameObject yellowOff;
+    public GameObject greenOff;
+    public GameObject blueOff;
+    public GameObject cyanOff;
+    public GameObject pinkOff;
+    public GameObject purpleOff;
 
     // Start is called before the first frame update
     void Start()
@@ -62,9 +71,17 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown("escape"))
         {
-            mainCanvas.SetActive(false);
-            controlsCanvas.SetActive(false);
-            pauseCanvas.SetActive(true);
+            if (pauseCanvas.active == true)
+            {
+                pauseCanvas.SetActive(false);
+                mainCanvas.SetActive(true);
+            }
+            else
+            {
+                mainCanvas.SetActive(false);
+                controlsCanvas.SetActive(false);
+                pauseCanvas.SetActive(true);
+            }
         }
     }
     // Update is called once per frame
@@ -119,15 +136,44 @@ public class PlayerController : MonoBehaviour
             mazeShortcut.SetActive(false);
             mainCamera.SetActive(false);
             buttonCamera.SetActive(true);
-            while (stairs.active == false)
-            {
-                StartCoroutine(ArchLights());
-            }
+            lights.SetActive(false);
+            StartCoroutine(ArchLights());     
+        }
+        if (other.gameObject.CompareTag("RedButton"))
+        {
+            redLight.SetActive(true);
+        }
+        if (other.gameObject.CompareTag("OrangeButton"))
+        {
+            orangeLight.SetActive(true);
+        }
+        if (other.gameObject.CompareTag("YellowButton"))
+        {
+            yellowLight.SetActive(true);
+        }
+        if (other.gameObject.CompareTag("GreenButton"))
+        {
+            greenLight.SetActive(true);
+        }
+        if (other.gameObject.CompareTag("CyanButton"))
+        {
+            cyanLight.SetActive(true);
+        }
+        if (other.gameObject.CompareTag("BlueButton"))
+        {
+            blueLight.SetActive(true);
+        }
+        if (other.gameObject.CompareTag("PurpleButton"))
+        {
+            purpleLight.SetActive(true);
+        }
+        if (other.gameObject.CompareTag("PinkButton"))
+        {
+            pinkLight.SetActive(true);
         }
         if (other.gameObject.CompareTag("RedButton") || (buttonCondition == 1 && other.gameObject.CompareTag("CyanButton")) || (buttonCondition == 2 && other.gameObject.CompareTag("GreenButton")) || (buttonCondition == 3 && other.gameObject.CompareTag("BlueButton")) || (buttonCondition == 4 && other.CompareTag("PinkButton")) || (buttonCondition == 5 && other.gameObject.CompareTag("OrangeButton")) || (buttonCondition == 6 && other.gameObject.CompareTag("YellowButton")) || (buttonCondition == 7 && other.gameObject.CompareTag("PurpleButton")))
         {
             buttonCondition ++;
-            other.gameObject.SetActive(true);
             Debug.Log(buttonCondition);
         }
         else if ((buttonCondition != 0 && other.gameObject.CompareTag("RedButton")) || (buttonCondition != 1 && other.gameObject.CompareTag("CyanButton")) || (buttonCondition != 2 && other.gameObject.CompareTag("GreenButton")) || (buttonCondition != 3 && other.gameObject.CompareTag("BlueButton")) || (buttonCondition != 4 && other.gameObject.CompareTag("PinkButton")) || (buttonCondition != 5 && other.gameObject.CompareTag("OrangeButton")) || (buttonCondition != 6 && other.gameObject.CompareTag("YellowButton")) || (buttonCondition != 7 && other.gameObject.CompareTag("PurpleButton")))
@@ -158,29 +204,45 @@ public class PlayerController : MonoBehaviour
     }
     private IEnumerator ArchLights()
     {
-            redArch.SetActive(true);
-            purpleArch.SetActive(false);
-            yield return new WaitForSecondsRealtime(2);
-            cyanArch.SetActive(true);
-            redArch.SetActive(false);
-            yield return new WaitForSecondsRealtime(2);
-            greenArch.SetActive(true);
-            cyanArch.SetActive(false);
-            yield return new WaitForSecondsRealtime(2);
-            blueArch.SetActive(true);
-            greenArch.SetActive(false);
-            yield return new WaitForSecondsRealtime(2);
-            pinkArch.SetActive(true);
-            blueArch.SetActive(false);
-            yield return new WaitForSecondsRealtime(2);
-            orangeArch.SetActive(true);
-            pinkArch.SetActive(false);
-            yield return new WaitForSecondsRealtime(2);
-            yellowArch.SetActive(true);
-            orangeArch.SetActive(false);
-            yield return new WaitForSecondsRealtime(2);
-            purpleArch.SetActive(true);
-            yellowArch.SetActive(false);
-            yield return new WaitForSecondsRealtime(2);
+        redArch.SetActive(true);
+        redOff.SetActive(false);
+        purpleArch.SetActive(false);
+        purpleOff.SetActive(true);
+        yield return new WaitForSecondsRealtime(2);
+        cyanArch.SetActive(true);
+        redArch.SetActive(false);
+        redOff.SetActive(true);
+        cyanOff.SetActive(false);
+        yield return new WaitForSecondsRealtime(2);
+        greenArch.SetActive(true);
+        greenOff.SetActive(false);
+        cyanArch.SetActive(false);
+        cyanOff.SetActive(true);
+        yield return new WaitForSecondsRealtime(2);
+        blueArch.SetActive(true);
+        greenArch.SetActive(false);
+        blueOff.SetActive(false);
+        greenOff.SetActive(true);
+        yield return new WaitForSecondsRealtime(2);
+        pinkArch.SetActive(true);
+        pinkOff.SetActive(false);
+        blueArch.SetActive(false);
+        blueOff.SetActive(true);
+        yield return new WaitForSecondsRealtime(2);
+        orangeArch.SetActive(true);
+        pinkArch.SetActive(false);
+        orangeOff.SetActive(false);
+        pinkOff.SetActive(true);
+        yield return new WaitForSecondsRealtime(2);
+        yellowArch.SetActive(true);
+        orangeArch.SetActive(false);
+        yellowOff.SetActive(false);
+        orangeOff.SetActive(true);
+        yield return new WaitForSecondsRealtime(2);
+        purpleArch.SetActive(true);
+        yellowArch.SetActive(false);
+        purpleOff.SetActive(false);
+        yellowOff.SetActive(true);
+        yield return new WaitForSecondsRealtime(2);
     }
 }
