@@ -9,7 +9,7 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     private int buttonCondition;
-    private int count;
+    private int count = 0;
     private int mazeCount;
     private Rigidbody rb;
     private float movementX;
@@ -61,7 +61,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent <Rigidbody>();
-        count = 0;
         mazeCount = 24;
         SetCountText();
         winTextObject.SetActive(false);
@@ -95,12 +94,12 @@ public class PlayerController : MonoBehaviour
     {
         countText.text = "Coins: " + count.ToString();
         mazeCountText.text =mazeCount.ToString();
-        if (count == 1)
+        if (count == 12)
         {
             winTextObject.SetActive(true);
             winWall.SetActive(false);
         }
-        else if (count == 2)
+        else if (count == 24)
         {
             mazeWinText.SetActive(true);
             mazeEndWall.SetActive(false);
