@@ -95,12 +95,12 @@ public class PlayerController : MonoBehaviour
     {
         countText.text = "Coins: " + count.ToString();
         mazeCountText.text =mazeCount.ToString();
-        if (count == 1)
+        if (count == 12)
         {
             winTextObject.SetActive(true);
             winWall.SetActive(false);
         }
-        else if (count == 2)
+        else if (count == 24)
         {
             mazeWinText.SetActive(true);
             mazeEndWall.SetActive(false);
