@@ -3814,6 +3814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77e742a0f6ea7d4ab5392ba8ef60e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  count: 32
   speed: 10
   countText: {fileID: 1865124916}
   mazeCountText: {fileID: 1373253097}

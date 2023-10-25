@@ -9,7 +9,7 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     private int buttonCondition;
-    private int count = 0;
+    public int count;
     private int mazeCount;
     private Rigidbody rb;
     private float movementX;
@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     public GameObject cyanOff;
     public GameObject pinkOff;
     public GameObject purpleOff;
+    public GameObject continueText;
 
     // Start is called before the first frame update
     void Start()
@@ -94,12 +95,12 @@ public class PlayerController : MonoBehaviour
     {
         countText.text = "Coins: " + count.ToString();
         mazeCountText.text =mazeCount.ToString();
-        if (count == 12)
+        if (count == 1)
         {
             winTextObject.SetActive(true);
             winWall.SetActive(false);
         }
-        else if (count == 24)
+        else if (count == 2)
         {
             mazeWinText.SetActive(true);
             mazeEndWall.SetActive(false);
@@ -137,6 +138,12 @@ public class PlayerController : MonoBehaviour
             buttonCamera.SetActive(true);
             lights.SetActive(false);
             StartCoroutine(ArchLights());     
+        }
+        if (other.gameObject.CompareTag("Area3Wall"))
+        {
+            mainCamera.SetActive(true);
+            buttonCamera.SetActive(false);
+            lights.SetActive(true);
         }
         if (other.gameObject.CompareTag("RedButton"))
         {
@@ -185,9 +192,13 @@ public class PlayerController : MonoBehaviour
         {
             stairs.SetActive(true);
         }
-        if (other.gameObject.CompareTag("Finish"))
+        if (other.gameObject.CompareTag("Finish") && count == 32)
         {
             finishText.SetActive(true);
+        }
+        else if (other.gameObject.CompareTag("Finish") && count < 32)
+        {
+            continueText.SetActive(true);
         }
     }
      void TurnOffLights()
