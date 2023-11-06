@@ -17,6 +17,7 @@ TagManager:
   - BlueButton
   - PurpleButton
   - PinkButton
+  - Box
   layers:
   - Default
   - TransparentFX
