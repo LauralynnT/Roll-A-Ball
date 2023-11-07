@@ -9,12 +9,12 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     private int buttonCondition;
-    public int count;
     private int mazeCount;
     private Rigidbody rb;
     private float movementX;
     private float movementY;
     public float speed = 0;
+    public int count;
     public TextMeshProUGUI countText;
     public TextMeshProUGUI mazeCountText;
     public GameObject buttonText;
@@ -66,7 +66,6 @@ public class PlayerController : MonoBehaviour
         SetCountText();
         winTextObject.SetActive(false);
     }
-
     private void Update()
     {
         if (Input.GetKeyDown("escape"))
