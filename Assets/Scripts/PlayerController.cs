@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 using Unity.VisualScripting;
 using System;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public GameObject mazeWinText;
     public GameObject mazeEndWall;
     public GameObject mazeObjectiveText;
+    public GameObject puzzleText;
     public GameObject mazeShortcut;
     public GameObject mainCamera;
     public GameObject buttonCamera;
@@ -57,7 +59,8 @@ public class PlayerController : MonoBehaviour
     public GameObject pinkOff;
     public GameObject purpleOff;
     public GameObject continueText;
-
+    public GameObject patternButton;
+    public GameObject theCube;
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +84,10 @@ public class PlayerController : MonoBehaviour
                 controlsCanvas.SetActive(false);
                 pauseCanvas.SetActive(true);
             }
+        }
+        if (theCube.active == true)
+        {
+            StartCoroutine(ArchLights());
         }
     }
     // Update is called once per frame
@@ -110,7 +117,6 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
-
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -133,10 +139,11 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             mazeWinText.SetActive(false);
             mazeShortcut.SetActive(false);
+            puzzleText.SetActive(true);
             mainCamera.SetActive(false);
             buttonCamera.SetActive(true);
             lights.SetActive(false);
-            StartCoroutine(ArchLights());     
+            StartCoroutine(ArchLights());
         }
         if (other.gameObject.CompareTag("Area3Wall"))
         {
@@ -211,47 +218,52 @@ public class PlayerController : MonoBehaviour
         pinkLight.SetActive(false);
         purpleLight.SetActive(false);
     }
-    private IEnumerator ArchLights()
+    public IEnumerator ArchLights()
     {
+        theCube.SetActive(false);
+        patternButton.SetActive(false);
         redArch.SetActive(true);
         redOff.SetActive(false);
         purpleArch.SetActive(false);
         purpleOff.SetActive(true);
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(3);
         cyanArch.SetActive(true);
         redArch.SetActive(false);
         redOff.SetActive(true);
         cyanOff.SetActive(false);
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(3);
         greenArch.SetActive(true);
         greenOff.SetActive(false);
         cyanArch.SetActive(false);
         cyanOff.SetActive(true);
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(3);
         blueArch.SetActive(true);
         greenArch.SetActive(false);
         blueOff.SetActive(false);
         greenOff.SetActive(true);
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(3);
         pinkArch.SetActive(true);
         pinkOff.SetActive(false);
         blueArch.SetActive(false);
         blueOff.SetActive(true);
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(3);
         orangeArch.SetActive(true);
         pinkArch.SetActive(false);
         orangeOff.SetActive(false);
         pinkOff.SetActive(true);
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(3);
         yellowArch.SetActive(true);
         orangeArch.SetActive(false);
         yellowOff.SetActive(false);
         orangeOff.SetActive(true);
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(3);
         purpleArch.SetActive(true);
         yellowArch.SetActive(false);
         purpleOff.SetActive(false);
         yellowOff.SetActive(true);
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(3);
+        purpleArch.SetActive(false);
+        purpleOff.SetActive(true);    
+        patternButton.SetActive(true);
     }
 }
