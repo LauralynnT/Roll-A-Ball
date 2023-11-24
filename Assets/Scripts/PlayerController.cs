@@ -61,9 +61,12 @@ public class PlayerController : MonoBehaviour
     public GameObject continueText;
     public GameObject patternButton;
     public GameObject theCube;
+    private AudioSource SFX;
+    public AudioClip rollSFX;
     // Start is called before the first frame update
     void Start()
     {
+        SFX = GetComponent<AudioSource>();
         rb = GetComponent <Rigidbody>();
         mazeCount = 24;
         SetCountText();
@@ -96,6 +99,7 @@ public class PlayerController : MonoBehaviour
         Vector2 movementVector = movementValue.Get<Vector2>();
         movementX = movementVector.x;
         movementY = movementVector.y;
+        SFX.PlayOneShot(rollSFX);
     }
     void SetCountText()
     {

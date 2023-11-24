@@ -7,6 +7,7 @@ public class ControlsButton : MonoBehaviour
 {
     public Button Controls;
     public GameObject ControlsParent;
+    public GameObject CreditsPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class ControlsButton : MonoBehaviour
         }
         else
         {
+            CreditsPanel.SetActive(false);
             ControlsParent.SetActive(true);
         }
     }
