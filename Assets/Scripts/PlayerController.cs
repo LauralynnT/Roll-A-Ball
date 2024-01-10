@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     public GameObject continueText;
     public GameObject patternButton;
     public GameObject theCube;
+    public GameObject disableMazeButton;
     private AudioSource SFX;
     public AudioClip rollSFX;
     // Start is called before the first frame update
@@ -115,6 +116,7 @@ public class PlayerController : MonoBehaviour
             mazeWinText.SetActive(true);
             mazeEndWall.SetActive(false);
             mazeObjectiveText.SetActive(false);
+            mazeShortcut.SetActive(false);
         }
     }
     private void FixedUpdate()
@@ -137,6 +139,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             winTextObject.SetActive(false);
             mazeObjectiveText.SetActive(true);
+            disableMazeButton.SetActive(true);
         }
         if (other.gameObject.CompareTag("Area2Wall"))
         {
