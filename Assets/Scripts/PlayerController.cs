@@ -58,6 +58,14 @@ public class PlayerController : MonoBehaviour
     public GameObject cyanOff;
     public GameObject pinkOff;
     public GameObject purpleOff;
+    public GameObject redButton;
+    public GameObject orangeButton;
+    public GameObject yellowButton;
+    public GameObject greenButton;
+    public GameObject blueButton;
+    public GameObject cyanButton;
+    public GameObject pinkButton;
+    public GameObject purpleButton;
     public GameObject continueText;
     public GameObject patternButton;
     public GameObject theCube;
@@ -161,38 +169,81 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("RedButton"))
         {
             redLight.SetActive(true);
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("OrangeButton"))
         {
             orangeLight.SetActive(true);
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("YellowButton"))
         {
             yellowLight.SetActive(true);
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("GreenButton"))
         {
             greenLight.SetActive(true);
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("CyanButton"))
         {
             cyanLight.SetActive(true);
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("BlueButton"))
         {
             blueLight.SetActive(true);
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("PurpleButton"))
         {
             purpleLight.SetActive(true);
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("PinkButton"))
         {
             pinkLight.SetActive(true);
+            other.gameObject.SetActive(false);
         }
-        if (other.gameObject.CompareTag("RedButton") || (buttonCondition == 1 && other.gameObject.CompareTag("CyanButton")) || (buttonCondition == 2 && other.gameObject.CompareTag("GreenButton")) || (buttonCondition == 3 && other.gameObject.CompareTag("BlueButton")) || (buttonCondition == 4 && other.CompareTag("PinkButton")) || (buttonCondition == 5 && other.gameObject.CompareTag("OrangeButton")) || (buttonCondition == 6 && other.gameObject.CompareTag("YellowButton")) || (buttonCondition == 7 && other.gameObject.CompareTag("PurpleButton")))
+        if (buttonCondition == 0 && other.gameObject.CompareTag("RedButton")) 
         {
             buttonCondition ++;
+            Debug.Log(buttonCondition);
+        }
+        if (buttonCondition == 1 && other.gameObject.CompareTag("CyanButton"))
+        {
+            buttonCondition++;
+            Debug.Log(buttonCondition);
+        } 
+        if (buttonCondition == 2 && other.gameObject.CompareTag("GreenButton"))
+        {
+            buttonCondition++;
+            Debug.Log(buttonCondition);
+        }
+        if (buttonCondition == 3 && other.gameObject.CompareTag("BlueButton"))
+        {
+            buttonCondition++;
+            Debug.Log(buttonCondition);
+        }
+        if (buttonCondition == 4 && other.gameObject.CompareTag("PinkButton"))
+        {
+            buttonCondition++;
+            Debug.Log(buttonCondition);
+        }
+        if (buttonCondition == 5 && other.gameObject.CompareTag("OrangeButton"))
+        {
+            buttonCondition++;
+            Debug.Log(buttonCondition);
+        }
+        if (buttonCondition == 6 && other.gameObject.CompareTag("YellowButton"))
+        {
+            buttonCondition++;
+            Debug.Log(buttonCondition);
+        }
+        if (buttonCondition == 7 && other.gameObject.CompareTag("PurpleButton"))
+        {
+            buttonCondition++;
             Debug.Log(buttonCondition);
         }
         else if ((buttonCondition != 0 && other.gameObject.CompareTag("RedButton")) || (buttonCondition != 1 && other.gameObject.CompareTag("CyanButton")) || (buttonCondition != 2 && other.gameObject.CompareTag("GreenButton")) || (buttonCondition != 3 && other.gameObject.CompareTag("BlueButton")) || (buttonCondition != 4 && other.gameObject.CompareTag("PinkButton")) || (buttonCondition != 5 && other.gameObject.CompareTag("OrangeButton")) || (buttonCondition != 6 && other.gameObject.CompareTag("YellowButton")) || (buttonCondition != 7 && other.gameObject.CompareTag("PurpleButton")))
@@ -217,13 +268,21 @@ public class PlayerController : MonoBehaviour
      void TurnOffLights()
     {
         redLight.SetActive(false);
+        redButton.SetActive(true);
         orangeLight.SetActive(false);
+        orangeButton.SetActive(true);
         yellowLight.SetActive(false);
+        yellowButton.SetActive(true);
         greenLight.SetActive(false);
+        greenButton.SetActive(true);
         blueLight.SetActive(false);
+        blueButton.SetActive(true);
         cyanLight.SetActive(false);
+        cyanButton.SetActive(true);
         pinkLight.SetActive(false);
+        pinkButton.SetActive(true);
         purpleLight.SetActive(false);
+        purpleButton.SetActive(true);
     }
     public IEnumerator ArchLights()
     {

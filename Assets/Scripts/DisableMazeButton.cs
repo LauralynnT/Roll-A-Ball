@@ -20,5 +20,6 @@ public class DisableMazeButton : MonoBehaviour
     {
         mazeObject.SetActive(false);
         mainWall.SetActive(true);
+        button.gameObject.SetActive(false);
     }
 }
