@@ -8,6 +8,7 @@ public class DisableMazeButton : MonoBehaviour
     public Button button;
     public GameObject mazeObject;
     public GameObject mainWall;
+    public GameObject otherButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +22,6 @@ public class DisableMazeButton : MonoBehaviour
         mazeObject.SetActive(false);
         mainWall.SetActive(true);
         button.gameObject.SetActive(false);
+        otherButton.SetActive(true);
     }
 }

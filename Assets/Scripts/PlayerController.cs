@@ -58,18 +58,11 @@ public class PlayerController : MonoBehaviour
     public GameObject cyanOff;
     public GameObject pinkOff;
     public GameObject purpleOff;
-    public GameObject redButton;
-    public GameObject orangeButton;
-    public GameObject yellowButton;
-    public GameObject greenButton;
-    public GameObject blueButton;
-    public GameObject cyanButton;
-    public GameObject pinkButton;
-    public GameObject purpleButton;
     public GameObject continueText;
     public GameObject patternButton;
     public GameObject theCube;
     public GameObject disableMazeButton;
+    public GameObject enableMazeButton;
     private AudioSource SFX;
     public AudioClip rollSFX;
     // Start is called before the first frame update
@@ -158,6 +151,8 @@ public class PlayerController : MonoBehaviour
             mainCamera.SetActive(false);
             buttonCamera.SetActive(true);
             lights.SetActive(false);
+            enableMazeButton.SetActive(false);
+            disableMazeButton.SetActive(false);
             StartCoroutine(ArchLights());
         }
         if (other.gameObject.CompareTag("Area3Wall"))
@@ -169,42 +164,34 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("RedButton"))
         {
             redLight.SetActive(true);
-            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("OrangeButton"))
         {
             orangeLight.SetActive(true);
-            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("YellowButton"))
         {
             yellowLight.SetActive(true);
-            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("GreenButton"))
         {
             greenLight.SetActive(true);
-            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("CyanButton"))
         {
             cyanLight.SetActive(true);
-            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("BlueButton"))
         {
             blueLight.SetActive(true);
-            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("PurpleButton"))
         {
             purpleLight.SetActive(true);
-            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("PinkButton"))
         {
             pinkLight.SetActive(true);
-            other.gameObject.SetActive(false);
         }
         if (buttonCondition == 0 && other.gameObject.CompareTag("RedButton")) 
         {
@@ -268,21 +255,13 @@ public class PlayerController : MonoBehaviour
      void TurnOffLights()
     {
         redLight.SetActive(false);
-        redButton.SetActive(true);
         orangeLight.SetActive(false);
-        orangeButton.SetActive(true);
         yellowLight.SetActive(false);
-        yellowButton.SetActive(true);
         greenLight.SetActive(false);
-        greenButton.SetActive(true);
         blueLight.SetActive(false);
-        blueButton.SetActive(true);
         cyanLight.SetActive(false);
-        cyanButton.SetActive(true);
         pinkLight.SetActive(false);
-        pinkButton.SetActive(true);
         purpleLight.SetActive(false);
-        purpleButton.SetActive(true);
     }
     public IEnumerator ArchLights()
     {
