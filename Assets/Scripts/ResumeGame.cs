@@ -18,5 +18,6 @@ public class ResumeGame : MonoBehaviour
     {
         mainCanvas.SetActive(true);
         pauseCanvas.SetActive(false);
+        Time.timeScale = 1;
     }
 }

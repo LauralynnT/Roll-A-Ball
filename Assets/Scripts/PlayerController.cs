@@ -82,12 +82,14 @@ public class PlayerController : MonoBehaviour
             {
                 pauseCanvas.SetActive(false);
                 mainCanvas.SetActive(true);
+                Time.timeScale = 1;
             }
             else
             {
                 mainCanvas.SetActive(false);
                 controlsCanvas.SetActive(false);
                 pauseCanvas.SetActive(true);
+                Time.timeScale = 0;
             }
         }
         if (theCube.active == true)
