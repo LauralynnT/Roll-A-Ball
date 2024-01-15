@@ -4616,6 +4616,7 @@ MonoBehaviour:
   creditsButton: {fileID: 0}
   creditsPanel: {fileID: 1528173490}
   controlsPanel: {fileID: 452094437}
+  options: {fileID: 1849427990}
 --- !u!114 &390995821
 MonoBehaviour:
   m_ObjectHideFlags: 0

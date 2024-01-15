@@ -8,6 +8,7 @@ public class CreditsButton : MonoBehaviour
     public Button creditsButton;
     public GameObject creditsPanel;
     public GameObject controlsPanel;
+    public GameObject options;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class CreditsButton : MonoBehaviour
         if (creditsPanel.active == false)
         {
             controlsPanel.SetActive(false);
+            options.SetActive(false);
             creditsPanel.SetActive(true);
         }
         else
