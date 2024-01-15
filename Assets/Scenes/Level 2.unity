@@ -27249,7 +27249,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'V.0.3
+  m_text: 'V.0.4
 
 '
   m_isRightToLeft: 0
@@ -29331,6 +29331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77e742a0f6ea7d4ab5392ba8ef60e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonCondition: 0
   speed: 10
   count: 32
   countText: {fileID: 1865124916}
@@ -29380,6 +29381,14 @@ MonoBehaviour:
   theCube: {fileID: 0}
   disableMazeButton: {fileID: 0}
   enableMazeButton: {fileID: 0}
+  redTrigger: {fileID: 0}
+  orangeTrigger: {fileID: 0}
+  yellowTrigger: {fileID: 0}
+  greenTrigger: {fileID: 0}
+  blueTrigger: {fileID: 0}
+  cyanTrigger: {fileID: 0}
+  pinkTrigger: {fileID: 0}
+  purpleTrigger: {fileID: 0}
   rollSFX: {fileID: 0}
 --- !u!114 &1711389131
 MonoBehaviour:

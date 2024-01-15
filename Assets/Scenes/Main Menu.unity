@@ -1141,7 +1141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'V.0.3
+  m_text: 'V.0.4
 
 '
   m_isRightToLeft: 0
@@ -18896,6 +18896,7 @@ MonoBehaviour:
   Controls: {fileID: 1912137512}
   ControlsParent: {fileID: 452094437}
   CreditsPanel: {fileID: 1528173490}
+  OptionsPanel: {fileID: 1849427990}
 --- !u!1 &1922385864
 GameObject:
   m_ObjectHideFlags: 0

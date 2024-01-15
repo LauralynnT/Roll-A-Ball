@@ -5,10 +5,32 @@ using UnityEngine.UI;
 
 public class VolumeSlider : MonoBehaviour
 {
-    public Slider volumeSlider;
-    public AudioSource audio;
+    [SerializeField] Slider volumeSlider;
+    [SerializeField] AudioSource audio;
+
+    public void Start()
+    {
+        if (!PlayerPrefs.HasKey("volume"))
+        {
+            PlayerPrefs.SetFloat("volume", 1);
+            Load();
+        }
+        else
+        {
+            Load();
+        }
+    }
     public void ChangeVolume()
     {
-        audio.volume = volumeSlider.value;
+        AudioListener.volume = volumeSlider.value;
+        Save();
+    }
+    private void Load()
+    {
+        volumeSlider.value = PlayerPrefs.GetFloat("volume");
+    }
+    private void Save()
+    {
+        PlayerPrefs.SetFloat("volume", volumeSlider.value);
     }
 }
